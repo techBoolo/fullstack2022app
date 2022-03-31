@@ -1,21 +1,41 @@
 import { useState } from 'react'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
+
+import Request from './Request.js'
+import Login from './Login.js'
+import Feedback from './Feedback.js'
+import Notification from './Notification.js'
+
 import Stack from '@mui/material/Stack'
-import TextField from '@mui/material/TextField'
-import Rating from '@mui/material/Rating'
 
 const Unicafe = (props) => {
-  const [ feedback, setFeedback ] =  useState(false); {/* disable feedback button after generating a passwrod */}
-  const [ password, setPassword ] = useState(null);  {/* generated password,  */}
+  const [ request, setRequest ] =  useState(false);  // disable feedback button after generating a passwrod 
+  const [ password, setPassword ] = useState(null);  // generated password  
   const [ customerPassword, setCustomerPassword ] = useState('')
   const [ loggedIn, setLoggedIn ] = useState(false)
   const [ rating, setRating ] = useState({ service: 0, food: 0 })
+  const [ feedback, setFeedback ] = useState({ service: {}, food: {}})
 
-  const handleFeedback = () => {
+  const [ message, setMessage ] = useState(false)
+
+  const reset = () => {
+    setLoggedIn(false)
+    setPassword(null)
+    setCustomerPassword('')
+    setRequest(false)
+    setRating({ service: 0, food: 0 })
+  }
+  const handleCustomerFeedback = () => {
+    console.log(rating);
+    console.log('thanks');
+
+    reset()
+    setMessage(true)
+    setTimeout(() => setMessage(false), 5000)
+  }
+
+  const handleRequest = () => {
     setPassword(Math.random().toString(36).substr(2, 4))
-    setFeedback(true)
+    setRequest(true)
   }
 
   const handleLogin = (ev) => {
@@ -27,7 +47,7 @@ const Unicafe = (props) => {
 
   const handleCancel = () => {
     setPassword(null)
-    setFeedback(false)
+    setRequest(false)
     setCustomerPassword('')
   }
 
@@ -36,63 +56,31 @@ const Unicafe = (props) => {
     setCustomerPassword('')
   }
 
-  const handleCustomerFeedback = () => {
-    console.log('thanks');
-  }
-
+  if(message) 
+    return <Notification message='Thank you for your feedback!' />
   return (
     <Stack spacing={3} sx={{ mx: '20px' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center'}}>
-        <Button disabled={feedback} variant='outlined' sx={{ marginRight: '10px' }} onClick={handleFeedback}>feedback</Button>
-        { password && <Typography sx={{ fontSize: '20px'}}>{password}</Typography> }
-      </Box>
+      <Request password={password} handleRequest={handleRequest} request={request} />
 
-    { loggedIn 
+      { loggedIn 
         ? (
-            <Stack spacing={2}>
-              <Typography variant='h6' sx={{ textDecoration: 'underline'}}>Rating</Typography>
-              <Stack>
-                <Typography>Service</Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center'}}>
-                  <Rating
-                    value={rating.service}
-                    onChange={(ev, newValue) => setRating({...rating, service: newValue})}
-                    precision={0.5}
-                  />
-                  <Typography sx={{ mx: '10px', fontSize: '18px'}} >{rating.service}/5</Typography>
-                </Box>
-              </Stack>
-              <Stack>
-                <Typography>Food</Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center'}}>
-                  <Rating
-                    value={rating.food}
-                    onChange={(ev, newValue) => setRating({...rating, food: newValue})}
-                    precision={0.5}
-                  />
-                  <Typography sx={{ mx: '10px', fontSize: '18px'}} >{rating.food}/5</Typography>
-                </Box>
-              </Stack>
-              <Stack direction='row'>
-                <Button variant='contained' onClick={handleCustomerFeedback}>Ok</Button>
-                <Button onClick={handleRatingCancel}>Cancel</Button>
-              </Stack>
-            </Stack>
+            <Feedback 
+              handleRatingCancel={handleRatingCancel}
+              handleCustomerFeedback={handleCustomerFeedback}
+              rating={rating} 
+              setRating={setRating}
+            />
           )
         :
           ( password && 
-            <Box sx={{}}>
-              <Typography variant='h6'>login</Typography>
-              <Box component='form' onSubmit={handleLogin}>
-                <TextField value={customerPassword} onChange={(ev) => setCustomerPassword(ev.target.value)} size='small' helperText='use the above code to login' />
-                <Box>
-                  <Button variant='contained' type='submit' disabled={Boolean(customerPassword.length !== 4)}>login</Button>
-                  <Button onClick={handleCancel}>cancel</Button>
-                </Box>
-              </Box>
-            </Box>
+            <Login 
+              handleLogin={handleLogin} 
+              customerPassword={customerPassword} 
+              setCustomerPassword={setCustomerPassword} 
+              handleCancel={handleCancel} 
+            />
           )
-    }
+      }
     </Stack>
   );
 };
