@@ -12,13 +12,13 @@ const Links = (props) => {
     <Grid container>
       <Grid item xs={12} sm={4} md={3}>
         <Typography sx={{ border: '1px solid #ccc', bgcolor: '#ccc', height: '40px', padding: '10px', textAlign: 'center'  }}>app lists</Typography>
-        <Stack sx={{}} spacing={1}>
+        <Stack sx={{ }} spacing={1}>
           <Link to='/unicafe' component={RouterLink} sx={{ padding: '10px', textDecoration: 'none', fontSize: '20px' }}>unicafe</Link>
         </Stack>
       </Grid>
 
       <Grid item xs={12} sm={8} md={9}>
-        <Box sx={{  border: '1px solid #ccc', paddingTop: '50px' }}>
+        <Box sx={{  borderLeft: '1px solid #ccc', paddingTop: '50px' }}>
           <Outlet />
         </Box>
       </Grid>
