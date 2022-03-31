@@ -4,6 +4,7 @@ import Request from './Request.js'
 import Login from './Login.js'
 import Feedback from './Feedback.js'
 import Notification from './Notification.js'
+import Result from './Result.js'
 
 import Stack from '@mui/material/Stack'
 
@@ -25,8 +26,17 @@ const Unicafe = (props) => {
     setRating({ service: 0, food: 0 })
   }
   const handleCustomerFeedback = () => {
-    console.log(rating);
-    console.log('thanks');
+    setFeedback({
+      ...feedback, 
+      service: {
+        ...feedback.service, 
+        [rating.service]: feedback.service[rating.service] ? feedback.service[rating.service] + 1 : 1 
+      }, 
+      food: {
+        ...feedback.food, 
+        [rating.food]: feedback.food[rating.food] ? feedback.food[rating.food] + 1 : 1
+      }
+    })
 
     reset()
     setMessage(true)
@@ -81,6 +91,7 @@ const Unicafe = (props) => {
             />
           )
       }
+      <Result feedback={feedback}/>
     </Stack>
   );
 };
