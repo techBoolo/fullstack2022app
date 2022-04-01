@@ -16,16 +16,33 @@ const Phonebook = (props) => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault()
-    let dup = people.find(person => person.name.toLowerCase() === name.toLowerCase().trim())
-    if(dup) {
-      alert(`${name} already in the phonebook`)
-      setName('')
-      setNumber('')
-      return
+    let dupIdx = people.findIndex(person => person.name.toLowerCase() === name.toLowerCase().trim())
+    if(dupIdx !== -1) {
+      const response = window.confirm(`${name} already in the phonebook, change the number?`)
+      if(!response) {
+        setName('')
+        setNumber('')
+        return
+      } else {
+        const p = [...people]
+        p.splice(dupIdx, 1, { id: p[dupIdx].id, name, number })
+        setPeople(p)
+        setName('')
+        setNumber('')
+        return 
+      }
     }
-    setPeople([...people, {id: people.length + 1, name: name.trim(), number: number.trim() }])
+    setPeople([...people, {id: Math.random().toString(36).substr(2, 4), name: name.trim(), number: number.trim() }])
     setName('')
     setNumber('')
+  }
+
+  const handleDelete = (id) => {
+    const response = window.confirm('confirm Deleting contact.')
+    if(response) {
+      const result = people.filter(person => person.id !== id) 
+      setPeople(result)
+    }
   }
 
   useEffect(() => {
@@ -39,7 +56,7 @@ const Phonebook = (props) => {
       <Typography variant='h6' sx={{ textDecoration: 'underline'}}>Phonebook</Typography>
       <Filter searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Form name={name} setName={setName} number={number} setNumber={setNumber} handleSubmit={handleSubmit} />
-      <Result filterResult={filterResult} />
+      <Result filterResult={filterResult} handleDelete={handleDelete} />
     </Stack>
   );
 };
