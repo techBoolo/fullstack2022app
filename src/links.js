@@ -23,14 +23,19 @@ const Links = (props) => {
 
         <Stack sx={{ }} spacing={1}>
           <Link to='/unicafe' component={RouterLink} 
-            sx={{ padding: '10px', textDecoration: 'none', fontSize: '20px' }}
+            sx={{ padding: '5px 10px', textDecoration: 'none', fontSize: '20px' }}
           >
             unicafe
           </Link>
           <Link to='/anecdote' component={RouterLink} 
-            sx={{ padding: '10px', textDecoration: 'none', fontSize: '20px' }}
+            sx={{ padding: '5px 10px', textDecoration: 'none', fontSize: '20px' }}
           >
             anecdote
+          </Link>
+          <Link to='/phonebook' component={RouterLink} 
+            sx={{ padding: '5px 10px', textDecoration: 'none', fontSize: '20px' }}
+          >
+            phonebook
           </Link>
         </Stack>
       </Grid>
