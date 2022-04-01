@@ -11,9 +11,27 @@ const Links = (props) => {
   return (
     <Grid container>
       <Grid item xs={12} sm={4} md={3}>
-        <Typography sx={{ border: '1px solid #ccc', bgcolor: '#ccc', height: '40px', padding: '10px', textAlign: 'center'  }}>app lists</Typography>
+        <Typography 
+          sx={{ border: '1px solid #ccc', 
+            bgcolor: '#ccc', 
+            height: '40px', 
+            padding: '10px', 
+            textAlign: 'center'  }}
+        >
+          app lists
+        </Typography>
+
         <Stack sx={{ }} spacing={1}>
-          <Link to='/unicafe' component={RouterLink} sx={{ padding: '10px', textDecoration: 'none', fontSize: '20px' }}>unicafe</Link>
+          <Link to='/unicafe' component={RouterLink} 
+            sx={{ padding: '10px', textDecoration: 'none', fontSize: '20px' }}
+          >
+            unicafe
+          </Link>
+          <Link to='/anecdote' component={RouterLink} 
+            sx={{ padding: '10px', textDecoration: 'none', fontSize: '20px' }}
+          >
+            anecdote
+          </Link>
         </Stack>
       </Grid>
 
