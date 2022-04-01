@@ -21,3 +21,7 @@ the most voted anecdote will be shown as well
 Phonebook
 
 a simple phonebook
+
+### Exercises 2.17 - 2.18
+
+extend phonebook(delete, handle duplicate
