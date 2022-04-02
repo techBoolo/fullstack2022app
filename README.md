@@ -33,3 +33,7 @@ Country
 uses an [API](https://restcountries.com) to get information about countries
 
 type in the search field, to get a specific country info
+
+## deployment
+
+Visit [deployment](https://fe2022app.vercel.app)
