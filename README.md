@@ -31,4 +31,5 @@ extend phonebook(delete, handle duplicate
 Country
 
 uses an [API](https://restcountries.com) to get information about countries
-type in the search field to get a specific country
+
+type in the search field, to get a specific country info
