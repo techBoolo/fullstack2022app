@@ -50,7 +50,7 @@ const Country = (props) => {
               (searchResult.length > 1)
                 ? (
                   searchResult.map(country => (
-                    <Box sx={{ display: 'flex', alignItems: 'center'}}>
+                    <Box key={country.name.common} sx={{ display: 'flex', alignItems: 'center'}}>
                       <Typography>{ country.name.official}</Typography>
                       <Button sx={{ ml: '10px'}} onClick={() => setSearchTerm(country.name.common)}>show</Button>
                     </Box>
