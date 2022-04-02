@@ -25,3 +25,10 @@ a simple phonebook
 ### Exercises 2.17 - 2.18
 
 extend phonebook(delete, handle duplicate
+
+## Exercise 2.12 - 2.13
+
+Country
+
+uses an [API](https://restcountries.com) to get information about countries
+type in the search field to get a specific country
