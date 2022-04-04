@@ -18,6 +18,7 @@ const Form = (props) => {
               onChange={ev => setName(ev.target.value)}
               size='small'
               autoFocus
+              autoComplete='off'
               margin='normal'
             />
           </Box>
@@ -26,6 +27,7 @@ const Form = (props) => {
               label='Number' 
               value={number}
               onChange={ev => setNumber(ev.target.value)}
+              autoComplete='off'
               size='small'
               margin='normal'
             />

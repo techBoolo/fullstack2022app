@@ -16,6 +16,10 @@ const Phonebook = (props) => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault()
+    if(!name || !number) {
+      alert('please enter name and number')
+      return
+    }
     let dupIdx = people.findIndex(person => person.name.toLowerCase() === name.toLowerCase().trim())
     if(dupIdx !== -1) {
       const response = window.confirm(`${name} already in the phonebook, change the number?`)

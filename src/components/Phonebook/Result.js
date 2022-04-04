@@ -9,7 +9,7 @@ const Result = ({ filterResult, handleDelete }) => {
   return (
     <>
       <Typography variant='h6' sx={{ textDecoration: 'underline'}}>Numbers</Typography>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr', gap: 1}}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: filterResult.length === 0 ? '1fr' : '1fr 2fr 1fr', gap: 1, alignItems: 'center'}}>
         {
           (filterResult.length === 0)
             ? <Typography>No result found</Typography>

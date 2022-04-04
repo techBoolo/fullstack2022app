@@ -9,6 +9,7 @@ const Filter = ({searchTerm, setSearchTerm}) => {
         label='Search'
         value={searchTerm}
         onChange={ev => setSearchTerm(ev.target.value)}
+        autoComplete='off'
         size='small'
         margin='normal'
       />

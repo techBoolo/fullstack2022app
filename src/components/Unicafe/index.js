@@ -7,6 +7,7 @@ import Notification from './Notification.js'
 import Result from './Result.js'
 
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 
 const Unicafe = (props) => {
   const [ request, setRequest ] =  useState(false);  // disable feedback button after generating a passwrod 
@@ -70,6 +71,7 @@ const Unicafe = (props) => {
     return <Notification message='Thank you for your feedback!' />
   return (
     <Stack spacing={3} sx={{ mx: '20px' }}>
+      <Typography variant='h6' sx={{ textDecoration: 'underline'}}>Customer feedback</Typography>
       <Request password={password} handleRequest={handleRequest} request={request} />
 
       { loggedIn 

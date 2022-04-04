@@ -10,9 +10,21 @@ const Login = ({ handleLogin, customerPassword, setCustomerPassword, handleCance
       <Box sx={{}}>
         <Typography variant='h6'>login</Typography>
         <Box component='form' onSubmit={handleLogin}>
-          <TextField value={customerPassword} onChange={(ev) => setCustomerPassword(ev.target.value)} size='small' helperText='use the above code to login' />
+          <TextField 
+            value={customerPassword} 
+            onChange={(ev) => setCustomerPassword(ev.target.value)} 
+            size='small' 
+            autoComplete='off'
+            helperText='use the above code to login' 
+          />
           <Box>
-            <Button variant='contained' type='submit' disabled={Boolean(customerPassword.length !== 4)}>login</Button>
+            <Button 
+              variant='contained' 
+              type='submit' 
+              disabled={Boolean(customerPassword.length !== 4)}
+            >
+              login
+            </Button>
             <Button onClick={handleCancel}>cancel</Button>
           </Box>
         </Box>

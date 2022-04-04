@@ -27,9 +27,9 @@ const Country = (props) => {
     setSearchResult(copyCountries.filter( country => country.name.common.match(term)))
   }, [searchTerm, countries])
 
-  console.log(searchResult);
   return (
     <Stack spacing={1} sx={{ mx: '20px' }}>
+      <Typography variant='h6' sx={{ textDecoration: 'underline'}}>Country Info</Typography>
       <Box>
         <TextField
           label='Search country'

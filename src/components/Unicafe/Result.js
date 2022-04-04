@@ -43,9 +43,9 @@ const Result = ({ feedback }) => {
             </Box>
         </Box>
       </Box>
-      <Typography>Summary</Typography>
+      <Typography>Stat summary</Typography>
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-        <Typography>All</Typography>
+        <Typography>feedback count</Typography>
         <Typography>{ total(feedback) }</Typography>
         <Typography>Average</Typography>
         <Typography>{ average(feedback).toFixed(2) }</Typography>
