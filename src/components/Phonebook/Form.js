@@ -24,6 +24,7 @@ const Form = (props) => {
           </Box>
           <Box>
             <TextField
+              type='number'
               label='Number' 
               value={number}
               onChange={ev => setNumber(ev.target.value)}

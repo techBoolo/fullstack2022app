@@ -11,7 +11,7 @@ const Router = (props) => {
   return (
     <Routes>
       <Route path='/' element={<Links />}>
-        <Route index element={<div>select an app</div>} />
+        <Route index element={<div style={{ margin: '20px' }}>Select an app</div>} />
         <Route path='unicafe' element={<Unicafe />} />
         <Route path='anecdote' element={<Anecdote />} />
         <Route path='phonebook' element={<Phonebook />} />
